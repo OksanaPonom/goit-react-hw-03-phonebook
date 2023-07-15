@@ -17,10 +17,11 @@ export class App extends Component {
     ],
     filter: '',
   };
+
   componentDidMount() {
     const contactsList = JSON.parse(localStorage.getItem('contactsList'));
     if (contactsList) {
-      this.setState(({ contacts }) => ({ contacts: contactsList }));
+      this.setState({ contacts: contactsList });
     }
   }
   componentDidUpdate(_, prevState) {
@@ -42,6 +43,7 @@ export class App extends Component {
 
     if (isAlreadyInContacts) {
       Notify.info(`${name} is already in contacts`);
+
       return;
     }
     this.setState(({ contacts }) => ({ contacts: [newContact, ...contacts] }));
